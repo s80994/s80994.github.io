@@ -90,40 +90,62 @@
             font-weight: 600;
         }
 
+        /* Button Styling */
+        .app-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            align-self: flex-start;
+        }
+
+        .app-button:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
 
         /* Desktop Grid Layout (6 columns) */
-        /* Card 1 (Profile) - Large Box: Background Image Added Here */
         .card-profile {
             grid-column: span 3;
             grid-row: span 2;
             justify-content: flex-start;
-            /* --- BACKGROUND IMAGE RULES --- */
             background-image: url('bg.jpg'); 
             background-size: cover;          
             background-position: center;    
-            /* Ensure content inside the card is readable */
             color: white; 
-            background-color: rgba(0, 0, 0, 0.3); /* Fallback/overlay */
+            background-color: rgba(0, 0, 0, 0.3);
         }
         
-        /* Override specific text colors for visibility on a dark background image */
         .card-profile .card-title,
         .card-profile .text-accent,
         .card-profile .link {
-            color: #b3d9ff; /* Very light blue for accent/titles */
+            color: #b3d9ff;
         }
         .card-profile .text-large,
         .card-profile .text-small {
             color: white;
         }
         .card-profile .text-large {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for name readability */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
         
-        /* Positioning and size definitions */
         .card-location { grid-column: span 2; }
         .card-tech-stack { grid-column: span 3; }
-        .card-case-study { grid-column: span 3; }
+        .card-case-study { 
+            grid-column: span 3; 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
         .card-hobby { grid-column: span 1; grid-row: span 1; }
         .card-reflection { grid-column: span 2; grid-row: span 1; }
         .card-playlist { grid-column: span 3; min-height: 120px; display: flex; align-items: center; }
@@ -138,11 +160,13 @@
                 grid-column: span 1 !important;
                 grid-row: span 1 !important;
             }
+            .card-case-study {
+                grid-template-columns: 1fr;
+            }
             body {
                 padding: 15px;
             }
-            /* Reverting colors on mobile profile card if the image isn't ideal */
-            .card-profile { background-color: rgba(0, 0, 0, 0.3); } /* Ensures some contrast */
+            .card-profile { background-color: rgba(0, 0, 0, 0.3); }
         }
     </style>
 </head>
@@ -183,9 +207,15 @@
         </div>
         
         <div class="bento-card card-case-study">
-            <p class="card-title">Recent Lab Experiment</p>
-            <p class="text-large" style="margin-bottom: 8px;">Starch Gelatinization in Local Kuih</p>
-            <p class="text-small">Analyzing texture and thermal profiles of **Kuih Lapis** to optimize traditional processing methods.</p>
+            <div>
+                <p class="card-title">Recent Lab Experiment</p>
+                <p class="text-large" style="margin-bottom: 8px;">Starch Gelatinization in Local Kuih</p>
+                <p class="text-small">Analyzing texture and thermal profiles of **Kuih Lapis** to optimize traditional processing methods.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; border-left: 1px solid #e9ecef; padding-left: 20px;">
+                <p class="text-small" style="font-weight: 600; color: var(--color-text-primary);">Boost Productivity</p>
+                <a href="https://s80994.github.io/focus-timer-appp/app.html" class="app-button" target="_blank">Try My Focus Timer App</a>
+            </div>
         </div>
 
         <div class="bento-card card-hobby">
